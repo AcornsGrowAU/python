@@ -4,4 +4,4 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: ghcr.io/katarti/python
+    image: acornsaustralia/python
