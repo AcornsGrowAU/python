@@ -1,4 +1,6 @@
-FROM registry.fedoraproject.org/fedora-minimal:34
+FROM registry.fedoraproject.org/fedora-minimal:35
 
-RUN microdnf install -y fedora-repos-modular-34-2.noarch && \
-    microdnf install -y python3
+RUN microdnf --nodocs -y upgrade && \
+    microdnf --nodocs -y install python3-pip && \
+    microdnf --nodocs -y reinstall tzdata && \
+    microdnf clean all
