@@ -3,5 +3,4 @@ services:
   python:
     build:
       context: .
-      dockerfile: Dockerfile
-    image: acornsaustralia/python
+    image: python:latest
