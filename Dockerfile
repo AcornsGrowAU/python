@@ -1,4 +1,4 @@
-FROM registry.fedoraproject.org/fedora-minimal:35
+FROM registry.fedoraproject.org/fedora-minimal:36
 
 RUN microdnf --nodocs -y upgrade && \
     microdnf --nodocs -y install python3-pip && \
