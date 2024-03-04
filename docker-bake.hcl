@@ -18,6 +18,6 @@ target "python" {
     "linux/amd64"
   ]
   args = {
-    "FEDORA_VERSION" = "40"
+    "FEDORA_VERSION" = "39"
   }
 }
