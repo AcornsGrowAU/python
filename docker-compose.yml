@@ -1,6 +1,5 @@
-version: '3.7'
 services:
   python:
     build:
       context: .
-    image: python:latest
+    image: acornsaustralia/python:latest
