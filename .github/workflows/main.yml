@@ -61,4 +61,4 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Push image
-        run: docker buildx bake --push
+        run: docker buildx bake --push --provenance=mode=max --sbom=true
