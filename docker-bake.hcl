@@ -9,16 +9,26 @@ group "default" {
 }
 
 target "python" {
+  name = "python-${replace(ver, ".", "-")}"
+  matrix = {
+    ver = [
+      "3.11",
+      "3.12",
+      "3.14"
+    ]
+  }
+
   pull = true
   tags = [
-    "acornsaustralia/python:latest",
-    GITHUB_RUN_NUMBER != null ? "acornsaustralia/python:${GITHUB_RUN_NUMBER}" : ""
+    "acornsaustralia/python:${ver}",
+    GITHUB_RUN_NUMBER != null ? "acornsaustralia/python:${ver}-${GITHUB_RUN_NUMBER}" : ""
   ]
   platforms = [
     "linux/amd64",
     "linux/arm64"
   ]
   args = {
-    "ROCKY_VERSION" = "9"
+    "ROCKY_VERSION"  = "9"
+    "PYTHON_VERSION" = ver
   }
 }
