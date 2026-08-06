@@ -1,30 +1,17 @@
 # docker-python
 
-This repository provides Rocky Linux-based Python Docker images.
+Rocky Linux-based Python base images, rebuilt weekly with OS security updates.
 
-## Build
+## Tags
 
-Create a builder:
+Built per Python minor version (Rocky 9 AppStream `python<X.Y>` streams):
 
-```bash
-docker buildx create --use --name builder
-```
+- `acornsaustralia/python:3.11`
+- `acornsaustralia/python:3.12`
+- `acornsaustralia/python:3.14`
 
-Build for `linux/amd64` and export images to the default image store (`docker images`):
+Each build is also pinned as `:<version>-<GITHUB_RUN_NUMBER>`. In every image `python3` / `python` / `pip3` / `pip` resolve to that version.
 
-```bash
-docker buildx bake --load
-```
+## Adding a version
 
-Build for a different or multiple architectures:
-
-```bash
-docker buildx bake --load --set="*.platform=linux/amd64,linux/arm64"
-```
-
-Note that building images for multiple architectures requires one of the following:
-
-* [Containerd image store](https://docs.docker.com/storage/containerd/) for the `--load` flag to work
-* Pushing directly to a registry, e.g. `docker buildx bake --push --set="*.platform=linux/amd64,linux/arm64"`
-* Using other [output types](https://docs.docker.com/reference/cli/docker/buildx/build/#output) or omitting output flags to keep build cache only
-
+Add the stream to the `ver` matrix in `docker-bake.hcl` — it must be an available Rocky AppStream `python<X.Y>` package.

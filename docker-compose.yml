@@ -1,0 +1,7 @@
+services:
+  python:
+    build:
+      context: .
+      args:
+        PYTHON_VERSION: "3.12"
+    image: acornsaustralia/python:3.12

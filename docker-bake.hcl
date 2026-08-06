@@ -9,10 +9,12 @@ group "default" {
 }
 
 target "python" {
-  name = "python-${replace(python_version, ".", "-")}"
+  name = "python-${replace(ver, ".", "-")}"
   matrix = {
-    python_version = [
-      "3.12", # TO be updated when package is available
+    ver = [
+      "3.11",
+      "3.12",
+      "3.14"
     ]
   }
 
@@ -22,7 +24,8 @@ target "python" {
     GITHUB_RUN_NUMBER != null ? "acornsaustralia/python:${python_version}-${GITHUB_RUN_NUMBER}" : ""
   ]
   platforms = [
-    "linux/amd64"
+    "linux/amd64",
+    "linux/arm64"
   ]
   args = {
     "ROCKY_VERSION"  = "10"
