@@ -1,7 +1,7 @@
-ARG ROCKY_VERSION
+ARG ROCKY_VERSION=10
 FROM rockylinux/rockylinux:${ROCKY_VERSION}-minimal AS base
 
-ARG PYTHON_VERSION
+ARG PYTHON_VERSION=3.12
 
 RUN microdnf --nodocs -y upgrade && \
     microdnf --nodocs -y install python${PYTHON_VERSION}-pip && \
