@@ -12,7 +12,6 @@ target "python" {
   name = "python-${replace(ver, ".", "-")}"
   matrix = {
     ver = [
-      "3.11",
       "3.12",
       "3.14"
     ]
@@ -20,8 +19,8 @@ target "python" {
 
   pull = true
   tags = [
-    "acornsaustralia/python:${python_version}",
-    GITHUB_RUN_NUMBER != null ? "acornsaustralia/python:${python_version}-${GITHUB_RUN_NUMBER}" : ""
+    "acornsaustralia/python:${ver}",
+    GITHUB_RUN_NUMBER != null ? "acornsaustralia/python:${ver}-${GITHUB_RUN_NUMBER}" : ""
   ]
   platforms = [
     "linux/amd64",
@@ -29,6 +28,6 @@ target "python" {
   ]
   args = {
     "ROCKY_VERSION"  = "10"
-    "PYTHON_VERSION" = "${python_version}"
+    "PYTHON_VERSION" = ver
   }
 }
