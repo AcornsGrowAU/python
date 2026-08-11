@@ -12,7 +12,6 @@ target "python" {
   name = "python-${replace(ver, ".", "-")}"
   matrix = {
     ver = [
-      "3.11",
       "3.12",
       "3.14"
     ]
@@ -28,7 +27,7 @@ target "python" {
     "linux/arm64"
   ]
   args = {
-    "ROCKY_VERSION"  = "9"
+    "ROCKY_VERSION"  = "10"
     "PYTHON_VERSION" = ver
   }
 }
